@@ -52,7 +52,6 @@ python live_gpu_rt.py
 ```
 
 ### Stuff we have done!
-- Developed a Flask REST API Server for video processing and facial recognition
 - Integrated YOLOv8m-face model for high-accuracy face detection
 - Fine-tuned an ArcFace model to generate consistent, normalised 512-dimensional embeddings. The mean vector embedding is then stored in a database.
 - Facial Recognition is performed using the ArcFace model by calculating the cosine similarity between a detected face's embedding and the stored embeddings of known individuals.
@@ -64,6 +63,7 @@ python live_gpu_rt.py
 
 ### Challenges faced
 - While finding ways to reduce lag, we have tested many techniques such as frame skipping, reducing the frequency of object recognition, multi-threading, including a buffer delay, using a whole different model. Nevertheless, we were almost always frequently led to a whole other nest of problems such as bounding box delays, jittering, frame rate volatility and even the infamous dependency hell :(
+- 
 ## Face filter
 1. Download [YOLOv8m-Face (ONNX) model](https://github.com/lindevs/yolov8-face) and [w600k_r50 (Arcface)](https://huggingface.co/maze/faceX/blob/e010b5098c3685fd00b22dd2aec6f37320e3d850/w600k_r50.onnx)
 2. Run the calibration_gpu_rt.py with the bash commands
