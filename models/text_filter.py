@@ -4,7 +4,7 @@ import argparse
 import time
 from paddleocr import PaddleOCR
 
-DEMO_MODE = "QUALITY"
+DEMO_MODE = "QUALITY" // Use "FAST" for better FPS
 
 if DEMO_MODE == "QUALITY":
     PROCESSING_WIDTH = 960
