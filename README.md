@@ -65,3 +65,23 @@ python live_gpu_rt.py
 
 ### Challenges faced
 - While finding ways to reduce lag, we have tested many techniques such as frame skipping, reducing the frequency of object recognition, multi-threading, including a buffer delay, using a whole different model. Nevertheless, we were almost always frequently led to a whole other nest of problems such as bounding box delays, jittering, frame rate volatility and even the infamous dependency hell :(
+## Face filter
+1. Download [YOLOv8m-Face (ONNX) model](https://github.com/lindevs/yolov8-face) and [w600k_r50 (Arcface)](https://huggingface.co/maze/faceX/blob/e010b5098c3685fd00b22dd2aec6f37320e3d850/w600k_r50.onnx)
+2. Run the calibration_gpu_rt.py with the bash commands
+```
+python calibrate_gpu_rt.py --video_path <vid_path> --streamer_id <id>
+```
+3. After calibration is complete, simply run the live_gpu_rt.py!
+
+## Text Filter
+1. The application can process both a live webcam feed and a pre-recorded MP4 video file.
+2. To Use a Webcam:
+   Simply run the script with no arguments
+```
+python your_script_name.py
+```
+3. To Process a Video File:
+   Provide the path to the video file as a command-line argument.
+```
+python your_script_name.py path/to/your/video.mp4
+```
