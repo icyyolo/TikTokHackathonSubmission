@@ -1,6 +1,25 @@
 # Byte meets Vibe
 
-Protect every face around you—our AI automatically detects and blurs bystander faces, and location indicators in real time, keeping your world private without missing a moment.
+Protect every face around you - our AI automatically detects and blurs bystander faces and location indicators in real time, keeping your world private without missing a moment.
+
+## Our Inspiration
+
+In March 2025, the tragic death of Airi Sato in Tokyo highlighted the dangers of location doxxing during livestreams. While broadcasting near a train station, her attacker tracked her down by recognising her surroundings. Unfortunately, similar incidents happen globally: streamers and everyday users can be exposed when street signs, storefronts, and other location indicators, combined with reverse image search engines, give away their exact location. The risk goes beyond the streamer alone: bystanders in the background can also be exposed, even if they didn’t consent to being filmed. Faces caught in livestreams or videos can be identified using facial recognition, linked to social media profiles, or used to infer their locations.
+
+
+## Our Idea
+
+Our project is a real-time privacy shield designed to prevent these risks. While targeted at livestreamers streaming at public locations, it can also accept video inputs and lessen the workload of content creators who want to maintain their privacy and reduce doxxing. It automatically detects and blurs text in the background such as street signs, station names, or storefronts while also blurring the faces of bystanders to protect their privacy.
+
+## Why This Matters
+
+By combining text blurring and facial blurring, our system provides a comprehensive privacy shield:
+
+- Protects streamers & influencers from being tracked through background details.
+
+- Safeguards bystanders who never consented to being filmed, ensuring their privacy and safety.
+
+Our mission: make digital sharing safer for everyone in the frame, not just the person holding the camera.
 
 ## How we built it
 Byte Meets Vibe has 2 components: the Frontend (React Native/Expo) and the Backend (Python Flask).
@@ -117,4 +136,4 @@ Location of video blurred
 
 <img width="718" height="695" alt="with filter image search" src="https://github.com/user-attachments/assets/33356d76-e8d0-4d48-a9a1-eed41940e789" /> 
 
-Google image search unable to identify the location accurately
+Google image search unable to identify the location accurately, because key visual cues are removed and there is less information to find a match
