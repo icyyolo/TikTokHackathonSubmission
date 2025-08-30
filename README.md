@@ -102,19 +102,19 @@ python your_script_name.py path/to/your/video.mp4
 - Hybrid "Detect-and-Track" Architecture: Every 12 frames, the PaddleOCR model performs a high-quality scan of the scene to find all text. For the frames in between, a set of Channel and Spatial Reliability Tracking (CSRT) trackers take over. These trackers smoothly follow the objects identified, and ensure the blur locks on to moving text.
 
 ### Demo
-<img width="2559" height="1439" alt="no filter" src="https://github.com/user-attachments/assets/0da2efb7-d760-4ebd-b101-1902d18aa19d" /> \   
+<img width="2559" height="1439" alt="no filter" src="https://github.com/user-attachments/assets/0da2efb7-d760-4ebd-b101-1902d18aa19d" />   
 
-Location of video revealed: Khatib Vale \
+Location of video revealed: Khatib Vale 
 
-<img width="699" height="677" alt="no filter image search" src="https://github.com/user-attachments/assets/99c2ae0e-2b67-4691-9531-750eb38481fa" /> \
+<img width="699" height="677" alt="no filter image search" src="https://github.com/user-attachments/assets/99c2ae0e-2b67-4691-9531-750eb38481fa" /> 
 
-Google image search was able to identify the location accurately \
+Google image search was able to identify the location accurately 
 
 
-<img width="2559" height="1439" alt="with filter" src="https://github.com/user-attachments/assets/5b939a25-70cd-4114-91e5-9609fe239e00" /> \
+<img width="2559" height="1439" alt="with filter" src="https://github.com/user-attachments/assets/5b939a25-70cd-4114-91e5-9609fe239e00" /> 
 
-Location of video blurred \
+Location of video blurred 
 
-<img width="718" height="695" alt="with filter image search" src="https://github.com/user-attachments/assets/33356d76-e8d0-4d48-a9a1-eed41940e789" /> \
+<img width="718" height="695" alt="with filter image search" src="https://github.com/user-attachments/assets/33356d76-e8d0-4d48-a9a1-eed41940e789" /> 
 
 Google image search unable to identify the location accurately
