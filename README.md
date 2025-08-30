@@ -1,6 +1,6 @@
 # Byte meets Vibe
 
-Protect every face around you—our AI automatically detects and blurs bystander faces in real time, keeping your world private without missing a moment.
+Protect every face around you—our AI automatically detects and blurs bystander faces, and location indicators in real time, keeping your world private without missing a moment.
 
 ## How we built it
 Byte Meets Vibe has 2 components: the Frontend (React Native/Expo) and the Backend (Python Flask).
@@ -80,18 +80,11 @@ python live_gpu_rt.py
 ### Challenges faced
 - While finding ways to reduce lag, we have tested many techniques such as frame skipping, reducing the frequency of object recognition, multi-threading, including a buffer delay, using a whole different model. Nevertheless, we were almost always frequently led to a whole other nest of problems such as bounding box delays, jittering, frame rate volatility and even the infamous dependency hell :(
 - 
-## Face filter
-1. Download [YOLOv8m-Face (ONNX) model](https://github.com/lindevs/yolov8-face) and [w600k_r50 (Arcface)](https://huggingface.co/maze/faceX/blob/e010b5098c3685fd00b22dd2aec6f37320e3d850/w600k_r50.onnx)
-2. Run the calibration_gpu_rt.py with the bash commands
-```
-python calibrate_gpu_rt.py --video_path <vid_path> --streamer_id <id>
-```
-3. After calibration is complete, simply run the live_gpu_rt.py!
 
 ## Text Filter
 1. The application can process both a live webcam feed and a pre-recorded MP4 video file.
 2. To Use a Webcam:
-   Simply run the script with no arguments
+   Run the script with no arguments
 ```
 python your_script_name.py
 ```
@@ -100,10 +93,21 @@ python your_script_name.py
 ```
 python your_script_name.py path/to/your/video.mp4
 ```
+### Features
+- Real-time text detection with PaddleOCR.
+- Automatic Gaussian blurring of detected regions.
+- Pre-processing (sharpening) to improve OCR accuracy on blurry text.
+- Dual configuration modes: QUALITY (better detection) and FAST (better FPS).
+- Works with webcam or video file input.
+- Hybrid "Detect-and-Track" Architecture: Every 12 frames, the PaddleOCR model performs a high-quality scan of the scene to find all text. For the frames in between, a set of Channel and Spatial Reliability Tracking (CSRT) trackers take over. These trackers smoothly follow the objects identified, and ensure the blur locks on to moving text.
+
+### Demo
 <img width="2559" height="1439" alt="no filter" src="https://github.com/user-attachments/assets/0da2efb7-d760-4ebd-b101-1902d18aa19d" />
 Location of video revealed: Khatib Vale
 <img width="699" height="677" alt="no filter image search" src="https://github.com/user-attachments/assets/99c2ae0e-2b67-4691-9531-750eb38481fa" />
 Google image search was able to identify the location accurately
+
+
 <img width="2559" height="1439" alt="with filter" src="https://github.com/user-attachments/assets/5b939a25-70cd-4114-91e5-9609fe239e00" />
 Location of video blurred
 <img width="718" height="695" alt="with filter image search" src="https://github.com/user-attachments/assets/33356d76-e8d0-4d48-a9a1-eed41940e789" />
