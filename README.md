@@ -30,10 +30,10 @@ python calibrate_gpu_rt.py --video_path <vid_path> --streamer_id <id>
 2. To Use a Webcam:
    Simply run the script with no arguments
 ```
-   python your_script_name.py
+python your_script_name.py
 ```
 3. To Process a Video File:
    Provide the path to the video file as a command-line argument.
 ```
-   python your_script_name.py path/to/your/video.mp4
+python your_script_name.py path/to/your/video.mp4
 ```
