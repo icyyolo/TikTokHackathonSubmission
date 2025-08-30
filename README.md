@@ -17,9 +17,51 @@ If you are using **Android**, scan using the Expo Go app\
 If you are using **IOS**, scan using your phone camera\
 
 ## Backend (For manual local testing/usage)
-1. Download [YOLOv8m-Face (ONNX) model](https://github.com/lindevs/yolov8-face) and [w600k_r50 (Arcface)](https://huggingface.co/maze/faceX/blob/e010b5098c3685fd00b22dd2aec6f37320e3d850/w600k_r50.onnx)
-2. Run the calibration script with the bash commands
+1. Make sure you have a Nvidia GPU, and run the scripts on Windows.
+2. Download [Nvidia CUDA v12.4](https://developer.nvidia.com/cuda-12-4-1-download-archive?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local)  
+3. Download [YOLOv8m-Face (ONNX) model](https://github.com/lindevs/yolov8-face) and [w600k_r50 (Arcface)](https://huggingface.co/maze/faceX/blob/e010b5098c3685fd00b22dd2aec6f37320e3d850/w600k_r50.onnx)
+4. Upload a video of yourself to calibrate the model. Make sure to do the following:
+Neutral => Maintain a relaxed, neutral facial expression.  
+Neutral, Front-Facing => Look directly at the camera with a neutral expression.  
+Head Turns (L & R) => Slowly turn your head left, then right.  
+Head Tilts (Up & Down) => Slowly tilt your head up, then down.  
+Head Rolls (clockwise) => Gently roll your head from side to side aka draw a big circle with your nose 
+Head cross => Draw a big X with your nose
+
+Smile (with & without) => Smile naturally, first with lips closed, then with a full smile showing teeth.  
+Frown 
+Eyes Closed => Briefly close your eyes.  
+Raised Eyebrows => Raise your eyebrows in a surprised expression.  
+Puffed Cheeks => Puff out your cheeks.
+
+Take-off-spectacles/Normal pose
+5. Set up a virtual environment with the bash commands
 ```
-python ...
+python -m venv venv
+./venv/Scripts/activate
+pip install -r requirements.txt
 ```
-3. After calibration is complete, simply run the live streaming script!
+6. Run the scripts 
+```
+python calibrate_gpu_rt.py --video_path "your-video-path.mp4" --streamer_id "your-name" --save_debug_images #To calibrate model
+```
+7. After calibration is complete, simply run the live streaming script!
+```
+python live_gpu_rt.py
+```
+
+### Stuff we have done!
+- Developed a Flask REST API Server for video processing and facial recognition
+- Integrated YOLOv8m-face model for high-accuracy face detection
+- Fine-tuned an ArcFace model to generate consistent, normalised 512-dimensional embeddings. The mean vector embedding is then stored in a database.
+- Facial Recognition is performed using the ArcFace model by calculating the cosine similarity between a detected face's embedding and the stored embeddings of known individuals.
+- Created a multi-criteria scoring system for automated quality assurance. It automatically validates samples based on Laplacian variance (sharpness/blur), brightness, contrast, and face size to filter out poor-quality images.
+- Used Non-Maximum Suppression (NMS) to eliminate duplicate bounding boxes for the same face.
+- Adopted advanced GPU acceleration with TensorRT for maximum performance by transitioning our pipeline to TensorRT 10.13, using FP16 precision to accelerate inference. 
+- Shifted to a single-threaded processing model to avoid CUDA context conflicts, while still using thread-safe queues for ingesting frames from the camera.
+- Stabilised the filtered live stream with a 5-second buffer delay, which absorbs processing time variations and presents the user with a consistently smooth video stream rather than a choppy, lagging one.
+- Implemented PaddleOCR with GPU support to identify and blur text-based Personal Identifiable Information (PII) from the video feed.
+- Hybrid "Detect-and-Track" Architecture: Every 12 frames, the PaddleOCR model performs a high-quality scan of the scene to find all text. For the frames in between, a set of Channel and Spatial Reliability Tracking (CSRT) trackers take over. These trackers smoothly follow the objects identified, and ensure the blur locks on to moving text.
+
+### Challenges faced
+- While finding ways to reduce lag, we have tested many techniques such as frame skipping, reducing the frequency of object recognition, multi-threading, including a buffer delay, using a whole different model. Nevertheless, we were almost always frequently led to a whole other nest of problems such as bounding box delays, jittering, frame rate volatility and even the infamous dependency hell :(
