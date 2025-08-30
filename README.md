@@ -100,3 +100,11 @@ python your_script_name.py
 ```
 python your_script_name.py path/to/your/video.mp4
 ```
+!Unfiltered image(demo_assets/no filter.png)
+- Location of video revealed - Khatib Vale
+!Results of image search(demo_assets/no filter image search.png)
+- Google image search was able to identify the location accurately
+!Filtered image(demo_assets/with filter.png)
+- Location of video blurred
+!Results of image search(demo_assets/with filter image search.png)
+- Google image search unable to identify the location accurately
