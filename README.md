@@ -86,12 +86,12 @@ python live_gpu_rt.py
 2. To Use a Webcam:
    Run the script with no arguments
 ```
-python your_script_name.py
+python text_filter.py
 ```
 3. To Process a Video File:
    Provide the path to the video file as a command-line argument.
 ```
-python your_script_name.py path/to/your/video.mp4
+python text_filter.py path/to/your/video.mp4
 ```
 ### Features
 - Real-time text detection with PaddleOCR.
