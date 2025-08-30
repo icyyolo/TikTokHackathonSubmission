@@ -2,6 +2,9 @@
 
 Protect every face around you—our AI automatically detects and blurs bystander faces in real time, keeping your world private without missing a moment.
 
+## How we built it
+Byte Meets Vibe has 2 components: the Frontend (React Native/Expo) and the Backend (Python Flask).
+
 ## Frontend
 
 ### Getting Started
