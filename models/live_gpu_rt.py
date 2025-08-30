@@ -20,7 +20,7 @@ CUDA_DEVICE_ID = 0
 os.environ['CUDA_VISIBLE_DEVICES'] = str(CUDA_DEVICE_ID)
 
 MODELS_DIR = "models"
-DET_MODEL_PATH = os.path.join(MODELS_DIR, "yolov8x-face-lindevs.onnx")
+DET_MODEL_PATH = os.path.join(MODELS_DIR, "yolov8m-face-lindevs.onnx")
 REC_MODEL_PATH = os.path.join(MODELS_DIR, "arcface_r100_v1.onnx")
 
 BUFFER_DELAY_SECONDS = 5.0
@@ -29,7 +29,7 @@ CONFIDENCE_THRESHOLD = 0.6
 BLUR_KERNEL_SIZE = (25, 25)
 TARGET_FPS = 60
 INPUT_RESOLUTION = (1080, 1920)  # Width, Height
-DATABASE_PATH = "streamer_embeddings_mx.db"
+DATABASE_PATH = "streamer_embeddings.db"
 STREAMER_ID_TO_LOAD = "mx"
 
 class TensorRTYOLODetector:

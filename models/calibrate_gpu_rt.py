@@ -16,7 +16,7 @@ from numpy.linalg import norm
 
 # --- Configuration ---
 MODELS_DIR = "models"
-DET_MODEL_PATH = os.path.join(MODELS_DIR, "yolov8x-face-lindevs.onnx")
+DET_MODEL_PATH = os.path.join(MODELS_DIR, "yolov8m-face-lindevs.onnx")
 REC_MODEL_PATH = os.path.join(MODELS_DIR, "arcface_r100_v1.onnx")
 
 # --- IMPROVED: Set more realistic quality thresholds ---
@@ -25,7 +25,7 @@ QUALITY_THRESHOLD = 40.0 # Laplacian variance, a measure of blurriness
 CONF_THRESHOLD = 0.6 # Confidence threshold for face detection
 NMS_THRESHOLD = 0.4 # Non-Maximum Suppression threshold
 
-DATABASE_PATH = "streamer_embeddings_mx.db"
+DATABASE_PATH = "streamer_embeddings.db"
 
 # A helper class to store face information
 class Face:
