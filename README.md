@@ -98,7 +98,7 @@ python live_gpu_rt.py
 
 ### Challenges faced
 - While finding ways to reduce lag, we have tested many techniques such as frame skipping, reducing the frequency of object recognition, multi-threading, including a buffer delay, using a whole different model. Nevertheless, we were almost always frequently led to a whole other nest of problems such as bounding box delays, jittering, frame rate volatility and even the infamous dependency hell :(
-- 
+
 
 ## Text Filter
 1. The application can process both a live webcam feed and a pre-recorded MP4 video file.
