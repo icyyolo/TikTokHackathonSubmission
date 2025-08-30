@@ -21,18 +21,19 @@ If you are using **IOS**, scan using your phone camera\
 2. Download [Nvidia CUDA v12.4](https://developer.nvidia.com/cuda-12-4-1-download-archive?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local)  
 3. Download [YOLOv8m-Face (ONNX) model](https://github.com/lindevs/yolov8-face) and [w600k_r50 (Arcface)](https://huggingface.co/maze/faceX/blob/e010b5098c3685fd00b22dd2aec6f37320e3d850/w600k_r50.onnx)
 4. Upload a video of yourself to calibrate the model. Make sure to do the following:
-Neutral => Maintain a relaxed, neutral facial expression.  
-Neutral, Front-Facing => Look directly at the camera with a neutral expression.  
-Head Turns (L & R) => Slowly turn your head left, then right.  
-Head Tilts (Up & Down) => Slowly tilt your head up, then down.  
-Head Rolls (clockwise) => Gently roll your head from side to side aka draw a big circle with your nose 
-Head cross => Draw a big X with your nose
-
-Smile (with & without) => Smile naturally, first with lips closed, then with a full smile showing teeth.  
-Frown 
-Eyes Closed => Briefly close your eyes.  
-Raised Eyebrows => Raise your eyebrows in a surprised expression.  
-Puffed Cheeks => Puff out your cheeks.
+   
+   Neutral => Maintain a relaxed, neutral facial expression.  
+   Neutral, Front-Facing => Look directly at the camera with a neutral expression.  
+   Head Turns (L & R) => Slowly turn your head left, then right.  
+   Head Tilts (Up & Down) => Slowly tilt your head up, then down.  
+   Head Rolls (clockwise) => Gently roll your head from side to side aka draw a big circle with your nose 
+   Head cross => Draw a big X with your nose
+   
+   Smile (with & without) => Smile naturally, first with lips closed, then with a full smile showing teeth.  
+   Frown 
+   Eyes Closed => Briefly close your eyes.  
+   Raised Eyebrows => Raise your eyebrows in a surprised expression.  
+   Puffed Cheeks => Puff out your cheeks.
 
 Take-off-spectacles/Normal pose
 5. Set up a virtual environment with the bash commands
@@ -60,8 +61,6 @@ python live_gpu_rt.py
 - Adopted advanced GPU acceleration with TensorRT for maximum performance by transitioning our pipeline to TensorRT 10.13, using FP16 precision to accelerate inference. 
 - Shifted to a single-threaded processing model to avoid CUDA context conflicts, while still using thread-safe queues for ingesting frames from the camera.
 - Stabilised the filtered live stream with a 5-second buffer delay, which absorbs processing time variations and presents the user with a consistently smooth video stream rather than a choppy, lagging one.
-- Implemented PaddleOCR with GPU support to identify and blur text-based Personal Identifiable Information (PII) from the video feed.
-- Hybrid "Detect-and-Track" Architecture: Every 12 frames, the PaddleOCR model performs a high-quality scan of the scene to find all text. For the frames in between, a set of Channel and Spatial Reliability Tracking (CSRT) trackers take over. These trackers smoothly follow the objects identified, and ensure the blur locks on to moving text.
 
 ### Challenges faced
 - While finding ways to reduce lag, we have tested many techniques such as frame skipping, reducing the frequency of object recognition, multi-threading, including a buffer delay, using a whole different model. Nevertheless, we were almost always frequently led to a whole other nest of problems such as bounding box delays, jittering, frame rate volatility and even the infamous dependency hell :(
