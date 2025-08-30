@@ -1,0 +1,5 @@
+# Text Filter
+numpy<2.0
+paddlepaddle-gpu==2.6.1.post118
+paddleocr==2.6.1.3
+opencv-contrib-python==4.6.0.66
