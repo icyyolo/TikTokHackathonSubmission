@@ -1,0 +1,1 @@
+export const BACKEND_URL = "https://slick-flowers-wait.loca.lt"
