@@ -17,6 +17,9 @@ If you are using **Android**, scan using the Expo Go app\
 If you are using **IOS**, scan using your phone camera\
 
 ## Backend (For manual local testing/usage)
+
+## Face Filter
+[Watch Video Here](https://youtu.be/RJbfGNuO_y8)
 1. Make sure you have a Nvidia GPU, and run the scripts on Windows.
 2. Download [Nvidia CUDA v12.4](https://developer.nvidia.com/cuda-12-4-1-download-archive?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local)  
 3. Download [YOLOv8m-Face (ONNX) model](https://github.com/lindevs/yolov8-face) and [w600k_r50 (Arcface)](https://huggingface.co/maze/faceX/blob/e010b5098c3685fd00b22dd2aec6f37320e3d850/w600k_r50.onnx)
@@ -27,7 +30,6 @@ Head Turns (L & R) => Slowly turn your head left, then right.
 Head Tilts (Up & Down) => Slowly tilt your head up, then down.  
 Head Rolls (clockwise) => Gently roll your head from side to side aka draw a big circle with your nose 
 Head cross => Draw a big X with your nose
-
 Smile (with & without) => Smile naturally, first with lips closed, then with a full smile showing teeth.  
 Frown 
 Eyes Closed => Briefly close your eyes.  
